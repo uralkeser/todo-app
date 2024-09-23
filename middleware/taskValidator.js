@@ -81,7 +81,7 @@ const validateUpdateData = (updateData) => {
 };
 
 //Check the sortBy query parameter
-const validateSortParameters = (sortBy) => {
+const validateSortParameters = (sortBy, order) => {
   const validSortFields = ['startDate', 'dueDate', 'doneDate'];
   if (!sortBy || !validSortFields.includes(sortBy)) {
     throw new Error(
@@ -89,6 +89,10 @@ const validateSortParameters = (sortBy) => {
         ','
       )}`
     );
+  }
+
+  if (order && !['asc', 'desc'].includes(order)) {
+    throw new Error('Invalid order. Use asc or desc.');
   }
 };
 
@@ -110,7 +114,6 @@ export const validateTaskCreation = (req, res, next) => {
 
 export const validateTaskEdition = (req, res, next) => {
   const { status, name, startDate, dueDate, doneDate } = req.body;
-
   const taskId = req.params.id;
 
   // Build the update object
@@ -155,8 +158,10 @@ export const validateTaskEdition = (req, res, next) => {
 };
 
 export const validateTaskDeletion = (req, res, next) => {
+  const taskId = req.params.id;
+
   try {
-    validateTaskId(req);
+    validateTaskId(taskId);
   } catch (err) {
     console.error(err.message);
     return res.status(400).json({ message: err.message });
@@ -165,9 +170,12 @@ export const validateTaskDeletion = (req, res, next) => {
 };
 
 export const validateTaskMarkingByStatus = (req, res, next) => {
+  const taskId = req.params.id;
+  const { status } = req.body;
+
   try {
-    validateTaskId(req);
-    validateStatus(req);
+    validateTaskId(taskId);
+    validateStatus(status);
   } catch (err) {
     console.error(err.message);
     return res.status(400).json({ message: err.message });
@@ -199,10 +207,10 @@ export const validateTaskSearchByName = (req, res, next) => {
 };
 
 export const validateTaskSortedByDate = (req, res, next) => {
-  const { sortBy } = req.query;
+  const { sortBy, order } = req.query;
 
   try {
-    validateSortParameters(sortBy);
+    validateSortParameters(sortBy, order);
   } catch (err) {
     console.error(err.message);
     return res.status(400).json({ message: err.message });

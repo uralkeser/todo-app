@@ -1,5 +1,5 @@
 export const serverConfig = {
-  PORT_NUMBER: process.env.PORT || 8000,
+  PORT_NUMBER: 8000,
 };
 
 export const databaseConfig = {

@@ -142,13 +142,6 @@ export const markTaskByStatus = async (req, res) => {
 export const filterByStatus = async (req, res) => {
   const { status } = req.query;
 
-  // Validate the status query parameter
-  // if (!status || !['to-do', 'done'].includes(status)) {
-  //   return res.status(400).json({
-  //     message: 'Invalid or missing status. Must be to-do or done.',
-  //   });
-  // }
-
   try {
     const tasks = await taskCollection.find({ status }).toArray();
     if (tasks.length === 0) {

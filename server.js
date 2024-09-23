@@ -15,6 +15,7 @@ app.use(logger);
 
 //Routes
 app.use('/api/task', taskRouter);
+app.use('/api/project', projectRouter);
 
 app.listen(serverConfig.PORT_NUMBER, () =>
   console.log(`Server is runing on port ${serverConfig.PORT_NUMBER}`)
