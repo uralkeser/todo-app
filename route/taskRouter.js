@@ -11,28 +11,38 @@ import {
   searchByName,
 } from '../controller/taskController.js';
 
+import {
+  validateTaskCreation,
+  validateTaskEdition,
+  validateTaskDeletion,
+  validateTaskMarkingByStatus,
+  validateTaskFilterByStatus,
+  validateTaskSearchByName,
+  validateTaskSortedByDate,
+} from '../middleware/taskValidator.js';
+
 //Create a task
-router.post('/', createTask);
+router.post('/', validateTaskCreation, createTask);
 
 //Get all tasks
 router.get('/', getAllTasks);
 
 //Update a task
-router.patch('/:id', updateTask);
+router.patch('/:id', validateTaskEdition, updateTask);
 
 //Delete a task
-router.delete('/:id', deleteTask);
+router.delete('/:id', validateTaskDeletion, deleteTask);
 
 //Mark a task as to-do/done
-router.patch('/status/:id', markTaskByStatus);
+router.patch('/mark/:id', validateTaskMarkingByStatus, markTaskByStatus);
 
 //Filter tasks by status
-router.get('/filter', filterByStatus);
+router.get('/filter', validateTaskFilterByStatus, filterByStatus);
 
 //Search tasks by name
-router.get('/search', searchByName);
+router.get('/search', validateTaskSearchByName, searchByName);
 
 //Sort by dates
-router.get('/sort', getTaskSortedByDate);
+router.get('/sort', validateTaskSortedByDate, getTaskSortedByDate);
 
 export default router;
