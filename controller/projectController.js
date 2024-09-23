@@ -2,7 +2,7 @@ import { mongoConnection } from '../config/mongoConfig.js';
 import { ObjectId } from 'mongodb';
 
 const db = await mongoConnection();
-const projectCollection = db.collection('posts');
+const projectCollection = db.collection('projects');
 const taskCollection = db.collection('tasks');
 
 export const createProject = async (req, res) => {
@@ -122,12 +122,10 @@ export const assignTaskToProject = async (req, res) => {
         .json({ message: `Project not found with ID: ${projectId}` });
     }
 
-    console.log(task);
-
     // Update the task to assign it to the project
     const result = await projectCollection.updateOne(
       { _id: ObjectId.createFromHexString(projectId) },
-      { $push: { tasks: task } }
+      { $addToSet: { tasks: task._id } }
     );
 
     // If no task was updated, return an error
