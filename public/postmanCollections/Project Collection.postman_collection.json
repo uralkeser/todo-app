@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "da5408a7-a5b3-42ed-9c1e-2f335214f907",
+		"name": "Project Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12410393"
+	},
+	"item": [
+		{
+			"name": "list project",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Project 1\",\r\n    \"startDate\": \"2024-10-20\",\r\n    \"dueDate\": \"2024-12-25\"\r\n}    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/project",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assignTask to a project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"projectId\": \"66f0ff87e8deb0bf5fe184bd\",\r\n    \"taskId\": \"66f0a1d1961f339ad7db953a\"\r\n}    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/project/assignTask",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project",
+						"assignTask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update project",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Project 19\",\r\n    \"startDate\": \"2024-09-22\",\r\n    \"dueDate\": \"2024-12-21\"\r\n}   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/project/66f0fc6c7c9400c3df4bec62",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project",
+						"66f0fc6c7c9400c3df4bec62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete project",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/project/66f0fc6c7c9400c3df4bec62",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project",
+						"66f0fc6c7c9400c3df4bec62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filter taks by Project name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/project/filter?projectName=Project 29",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "projectName",
+							"value": "Project 29"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sort projects by dates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/project/sort?sortBy=startDate",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"project",
+						"sort"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "startDate"
+						},
+						{
+							"key": "order",
+							"value": "asc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

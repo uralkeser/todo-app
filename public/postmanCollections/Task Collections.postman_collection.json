@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "56c75db4-fcf5-4508-ac64-5ded7cd39d7a",
+		"name": "Task Collections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12410393"
+	},
+	"item": [
+		{
+			"name": "a- create-a-task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Task 29\",\r\n    \"status\": \"to-do\",\r\n    \"startDate\": \"2024-09-20\",\r\n    \"dueDate\": \"2024-12-25\",\r\n    \"doneDate\": null\r\n}    \r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/task",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b- list-all-tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/task",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "c- edit a task",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Task 13\",\r\n    \"status\": \"done\",\r\n    \"startDate\": \"2024-08-12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/task/66f0af7765e1e17e42cc5d18",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task",
+						"66f0af7765e1e17e42cc5d18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "d- delete a task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/task/66f0af6565e1e17e42cc5d17",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task",
+						"66f0af6565e1e17e42cc5d17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "e- mark a task",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"to-do\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/task/mark/66f08d7bc7ed8cb69aad5b08",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task",
+						"mark",
+						"66f08d7bc7ed8cb69aad5b08"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "f- filter taks by status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/task/filter?status=done",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "done"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "g- search taks by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/task/search?name=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "h- sort tasks by dates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/task/sort?sortBy=startDate&order=asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"task",
+						"sort"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "startDate"
+						},
+						{
+							"key": "order",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
