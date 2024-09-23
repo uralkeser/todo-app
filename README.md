@@ -4,7 +4,7 @@ Simple RESTful Api with using Node.js, Express, MongoDB. All codes were written 
 
 ## Before Get Started
 
-This repo contains local MongoDB credentials. You may provide manually as an .env file given the format below or write your URL and Database name to configConstant.js under the folder config. Do not forget to remove brachets.
+This repo contains local MongoDB credentials. You may provide manually as an .env file given the format below or write your URL and Database name to configConstant.js under the folder config. Do not forget to remove brachets. For bonus cases use separate.js under the folder public also you may find db creation script dbCreation.js under the same folder .
 
 ```yaml
 # .env
@@ -50,6 +50,13 @@ Start the server.
 
 ```bash
 npm run dev
+```
+
+## Bonus
+
+```bash
+cd public
+node separate.js
 ```
 
 ## License
